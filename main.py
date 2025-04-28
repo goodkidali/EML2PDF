@@ -15,8 +15,8 @@ OUTPUT_FOLDER = Path("./OUTPUT") # <<<--- CHANGE THIS to where you want the resu
 # --- End Configuration ---
 
 # Configure logging for xhtml2pdf (optional, reduces console noise)
-# logging.basicConfig(level=logging.WARNING) # Or INFO, DEBUG
-# logging.getLogger("xhtml2pdf").setLevel(logging.WARNING)
+logging.basicConfig(level=logging.WARNING) # Or INFO, DEBUG
+logging.getLogger("xhtml2pdf").setLevel(logging.WARNING)
 
 # --- Helper Function to Sanitize Filenames ---
 def sanitize_filename(filename):
@@ -188,7 +188,7 @@ def process_eml_file(eml_path, output_base_dir):
                     except Exception as e:
                         print(f"  [Error] Could not save attachment '{filename}': {e}")
                 # else: # Optional: Log skipped non-PDF attachments
-                #     print(f"  Skipping non-PDF attachment: {part.get_filename() or 'unnamed'}")
+                    print(f"  Skipping non-PDF attachment: {part.get_filename() or 'unnamed'}")
 
 
     except FileNotFoundError:
